@@ -119,6 +119,9 @@ type PosOrderItemRequest = {
   modifier_price_adjustment?: number | string;
   variants?: unknown[];
   modifiers?: unknown[];
+  /** Catatan per item (isi kartu ucapan, tulisan nama, …) → kitchen_notes. */
+  notes?: string | null;
+  kitchen_notes?: string | null;
   station?: string;
   discount_type?: string | null;
   discount_value?: number | string | null;
@@ -1438,6 +1441,7 @@ export async function POST(request: NextRequest) {
         product_sku: String(skuByProduct.get(String(item.product_id)) || item.product_sku || item.product_id || '').slice(0, 50),
         variants: item.variants || [],
         modifiers: item.modifiers || [],
+        kitchen_notes: String(item.kitchen_notes || item.notes || '').slice(0, 500),
         quantity: qty,
         unit_price: unitPrice,
         subtotal: subtotalValue,

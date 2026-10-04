@@ -1,3 +1,4 @@
+import { withActiveCustomizationOptions } from "@/lib/pos/merch-personalization";
 import { NextRequest, NextResponse } from 'next/server';
 import { createPgClient } from "@/lib/pg/create-client";
 import { requirePosMenu } from '@/lib/api/auth';
@@ -122,6 +123,7 @@ export async function GET(request: NextRequest) {
             min_selection,
             max_selection,
             display_order,
+            is_active,
             modifiers:pos_modifiers(*)
           )
         )
@@ -153,9 +155,11 @@ export async function GET(request: NextRequest) {
     const visibleRows = includeInactive
       ? (data ?? [])
       : (data ?? []).filter((product: { sales_channels?: unknown }) => isSoldIn(product.sales_channels, "pos"));
-    const normalizedProducts = visibleRows.map((product) =>
-      withProductXpAlias(product as Record<string, unknown>)
-    );
+    const normalizedProducts = visibleRows.map((product) => {
+      const row = withProductXpAlias(product as Record<string, unknown>);
+      // Kasir: varian/grup/opsi personalisasi nonaktif tidak ditawarkan (EPIC-054).
+      return includeInactive ? row : withActiveCustomizationOptions(row as Parameters<typeof withActiveCustomizationOptions>[0]);
+    });
 
     const enrichedProducts = await enrichPosProductsWithPurchasingCogs(
       db,

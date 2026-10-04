@@ -18,7 +18,8 @@ export type PricedModifierGroup = {
   modifier_group: {
     name: string;
     min_selection?: number | string | null;
-    modifiers: Array<{ id: string; name: string; price_adjustment?: Numeric }>;
+    display_order?: number | null;
+    modifiers: Array<{ id: string; name: string; price_adjustment?: Numeric; display_order?: number | null }>;
   };
 };
 export type PricedProduct = {
@@ -37,6 +38,29 @@ export type CustomizationPrice = {
 };
 
 /**
+ * Grup modifier & opsinya diurutkan menurut display_order. Relasi bersarang
+ * dari API (pos_product_modifiers → group → modifiers) tidak berurutan, jadi
+ * tanpa ini urutan grup di popup — dan urutan nama opsi di keranjang/struk —
+ * berubah-ubah (EPIC-054: belasan grup personalisasi per produk).
+ */
+export function orderedModifierGroups<G extends PricedModifierGroup>(groups: G[] | null | undefined): G[] {
+  const order = (value: number | null | undefined) => (typeof value === "number" ? value : Number.MAX_SAFE_INTEGER);
+  return [...(groups ?? [])]
+    .map((group, index) => ({ group, index }))
+    .sort((a, b) => order(a.group.modifier_group.display_order) - order(b.group.modifier_group.display_order) || a.index - b.index)
+    .map(({ group }) => ({
+      ...group,
+      modifier_group: {
+        ...group.modifier_group,
+        modifiers: [...group.modifier_group.modifiers]
+          .map((mod, index) => ({ mod, index }))
+          .sort((a, b) => order(a.mod.display_order) - order(b.mod.display_order) || a.index - b.index)
+          .map(({ mod }) => mod),
+      },
+    }));
+}
+
+/**
  * Pilihan awal saat popup kustomisasi dibuka. Varian: yang pertama (ukuran
  * dsb. wajib ada). Modifier: HANYA grup wajib (min_selection ≥ 1) yang
  * diisi opsi pertama — add-on opsional (Special Beans, Oat Milk, …) mulai
@@ -47,7 +71,7 @@ export function defaultCustomizationSelection(product: PricedProduct): {
   selectedModifiers: Record<string, string[]>;
 } {
   const selectedModifiers: Record<string, string[]> = {};
-  for (const group of product.modifiers ?? []) {
+  for (const group of orderedModifierGroups(product.modifiers)) {
     const required = Number(group.modifier_group.min_selection ?? 0) >= 1;
     const first = group.modifier_group.modifiers[0];
     if (required && first) selectedModifiers[group.modifier_group.name] = [first.id];
@@ -70,7 +94,7 @@ export function computeCustomizationPrice(
 
   const modifierNames: string[] = [];
   let modifierAdj = 0;
-  for (const group of product.modifiers ?? []) {
+  for (const group of orderedModifierGroups(product.modifiers)) {
     const ids = selection?.selectedModifiers?.[group.modifier_group.name] ?? [];
     for (const id of ids) {
       const mod = group.modifier_group.modifiers.find((m) => m.id === id);

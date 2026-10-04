@@ -56,6 +56,7 @@ deploying-dev · ready-for-qa · blocked · done).
 | [EPIC-051](./EPIC-051-tagihan-member.md) | Tagihan Member — Cicilan Order Member (POS → Operasional → Tagihan) | ready-for-qa | 2026-10-01 |
 | [EPIC-052](./EPIC-052-multi-toko-stok-per-toko.md) | Multi-Toko — Stok per Toko & Transfer Stok (Paddy retail) | ready-for-qa | 2026-10-04 |
 | [EPIC-053](./EPIC-053-pos-mode-retail.md) | POS Mode Retail — Kasir Toko tanpa Elemen F&B | ready-for-qa | 2026-10-04 |
+| [EPIC-054](./EPIC-054-ballooney-personalisasi.md) | Ballooney OS — Rebrand & Personalisasi Varian Custom (SKU → personalisasi, katalog ballooney.co.id) | ready-for-qa | 2026-10-04 |
 
 Aturan:
 - Epic + registry ini adalah sumber kebenaran status pekerjaan (canonical).

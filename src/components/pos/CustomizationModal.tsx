@@ -1,12 +1,14 @@
 "use client";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Sparkles, Utensils } from "lucide-react";
+import { Palette, Sparkles, Utensils } from "lucide-react";
 import { PosProductThumbnail } from "@/components/pos/PosProductThumbnail";
 import type { Product } from "@/lib/pos-api";
-import { computeCustomizationPrice } from "@/lib/pos/customization-price";
+import { computeCustomizationPrice, orderedModifierGroups } from "@/lib/pos/customization-price";
 import { memberPrice } from "@/lib/pos/member-price";
 import { MemberPriceText } from "@/components/pos/MemberPriceText";
+import { IS_RETAIL_POS } from "@/lib/pos/business-mode";
+import type { SkuRef } from "@/lib/pos/merch-personalization";
 
 export interface SelectedCustomization {
   product: Product;
@@ -14,6 +16,8 @@ export interface SelectedCustomization {
   selectedModifiers: Record<string, string[]>;
   quantity: number;
   notes: string;
+  /** EPIC-054 — varian ber-stok yang sudah dipilih (merchandise); harga dasar = harga SKU. */
+  sku?: SkuRef | null;
 }
 
 interface Props {
@@ -45,13 +49,18 @@ export function CustomizationModal({
 }: Props) {
   if (!product) return null;
   const variants = product.variants || [];
-  const modifiers = product.modifiers || [];
+  const modifiers = orderedModifierGroups(product.modifiers);
 
   const { basePrice, unitPrice } = computeCustomizationPrice(product, value);
   const lineTotal = unitPrice * (value?.quantity || 1);
   const memberLineTotal = memberPrice(unitPrice, memberDiscountPercent) * (value?.quantity || 1);
 
   const quantity = value?.quantity || 1;
+  // Retail (Ballooney): modifier = opsi personalisasi, catatan = teks custom.
+  const GroupIcon = IS_RETAIL_POS ? Palette : Utensils;
+  const notesPlaceholder = IS_RETAIL_POS
+    ? "Catatan personalisasi — isi kartu ucapan, nama/tulisan, tanggal & jam kirim"
+    : "Catatan (opsional) — mis. kurang manis, less ice";
   const priceLabel = (amount: number, zeroText = "") =>
     amount > 0 ? `+${formatCurrency(amount)}` : amount < 0 ? formatCurrency(amount) : zeroText;
   const optionClass = (selected: boolean) =>
@@ -71,6 +80,9 @@ export function CustomizationModal({
             </div>
             <div className="min-w-0">
               <DialogTitle className="truncate text-lg font-bold">{product.name}</DialogTitle>
+              {value?.sku && (
+                <div className="truncate text-xs font-medium text-gray-600">Varian: {value.sku.name}</div>
+              )}
               <div className="flex items-baseline gap-2 text-sm">
                 <MemberPriceText
                   price={basePrice}
@@ -119,7 +131,7 @@ export function CustomizationModal({
             return (
               <div key={group.modifier_group.id} className="space-y-1.5">
                 <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-gray-600">
-                  <Utensils className="h-3.5 w-3.5 text-primary" />
+                  <GroupIcon className="h-3.5 w-3.5 text-primary" />
                   {groupName}
                 </div>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -163,7 +175,7 @@ export function CustomizationModal({
             type="text"
             value={value?.notes || ""}
             onChange={(e) => onChange({ ...value!, notes: e.target.value })}
-            placeholder="Catatan (opsional) — mis. kurang manis, less ice"
+            placeholder={notesPlaceholder}
             className="h-10 w-full rounded-lg border border-gray-300 px-3 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
         </div>

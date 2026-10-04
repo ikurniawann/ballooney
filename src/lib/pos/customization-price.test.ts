@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeCustomizationPrice, defaultCustomizationSelection, toPrice } from "./customization-price";
+import { computeCustomizationPrice, defaultCustomizationSelection, orderedModifierGroups, toPrice } from "./customization-price";
 
 // Bentuk data persis seperti dari API: base_price string (kolom numeric),
 // price_adjustment angka (lewat JSON relasi).
@@ -83,5 +83,36 @@ describe("defaultCustomizationSelection", () => {
   it("varian default = yang pertama; tanpa varian = null", () => {
     expect(defaultCustomizationSelection({ base_price: 1, variants: [{ id: "s", name: "S" }, { id: "l", name: "L" }] }).selectedVariant).toBe("s");
     expect(defaultCustomizationSelection({ base_price: 1 }).selectedVariant).toBeNull();
+  });
+});
+
+describe("orderedModifierGroups (EPIC-054)", () => {
+  const group = (name: string, display_order: number | null, mods: Array<[string, number | null]>) => ({
+    modifier_group: {
+      name,
+      display_order,
+      modifiers: mods.map(([id, order]) => ({ id, name: id, price_adjustment: 0, display_order: order })),
+    },
+  });
+
+  it("urut menurut display_order grup & opsi; tanpa urutan ditaruh di akhir, stabil", () => {
+    const sorted = orderedModifierGroups([
+      group("Pengiriman", 17, [["antar", 2], ["ambil", 1]]),
+      group("Tanpa urutan", null, []),
+      group("Warna Balon", 6, [["gold", null], ["red", 3]]),
+      group("Bentuk", 5, []),
+    ]);
+    expect(sorted.map((g) => g.modifier_group.name)).toEqual(["Bentuk", "Warna Balon", "Pengiriman", "Tanpa urutan"]);
+    expect(sorted[2].modifier_group.modifiers.map((m) => m.id)).toEqual(["ambil", "antar"]);
+    expect(sorted[1].modifier_group.modifiers.map((m) => m.id)).toEqual(["red", "gold"]);
+  });
+
+  it("urutan nama opsi di keranjang mengikuti urutan grup, bukan urutan API", () => {
+    const product = {
+      base_price: 100,
+      modifiers: [group("Kirim", 2, [["Antar", 1]]), group("Boneka", 1, [["Love Bear", 1]])],
+    };
+    const price = computeCustomizationPrice(product, { selectedModifiers: { Kirim: ["Antar"], Boneka: ["Love Bear"] } });
+    expect(price.modifierNames).toEqual(["Love Bear", "Antar"]);
   });
 });

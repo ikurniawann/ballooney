@@ -68,6 +68,11 @@ import {
   createSplitOrder,
 } from '../api';
 import { completeCheckout, updateOrderStatus, type ProductSku } from '@/lib/pos-api';
+import {
+  hasPersonalization,
+  productForSkuPersonalization,
+  skuPersonalizedLineId,
+} from '@/lib/pos/merch-personalization';
 import { formatPaymentMethodLabel } from '@/features/pos/reports/utils/transaction-labels';
 import { isFocPaymentMethod } from '@/lib/pos/payment-methods';
 import { MerchSkuPickerDialog } from '@/components/pos/MerchSkuPickerDialog';
@@ -1134,6 +1139,16 @@ function CashierPageNewContent({ variant }: { variant: CashierPageVariant }) {
      supaya dua varian berbeda tidak digabung; harga = override ?? produk) */
   const handleSelectMerchSku = useCallback((product: Product, sku: ProductSku) => {
     if (!requireActiveShift()) return;
+    // EPIC-054 — varian ber-stok yang punya grup personalisasi (isi helium,
+    // tulisan custom, …) lanjut ke popup kustomisasi dengan harga dasar SKU.
+    if (hasPersonalization(product)) {
+      const skuProduct = productForSkuPersonalization(product, sku);
+      const { selectedModifiers } = defaultCustomizationSelection(skuProduct);
+      setCustomizingProduct(skuProduct);
+      setCustom({ product: skuProduct, selectedVariant: null, selectedModifiers, quantity: 1, notes: '', sku });
+      setMerchSkuProduct(null);
+      return;
+    }
     if (!tryAddCatalogItem(product, {
       id: `${product.id}::sku:${sku.id}`,
       productId: product.id,
@@ -1181,11 +1196,15 @@ function CashierPageNewContent({ variant }: { variant: CashierPageVariant }) {
     const product = customizingProduct;
     const { variantName, variantAdj, modifierNames, modifierAdj, unitPrice: finalPrice } =
       computeCustomizationPrice(product, custom);
-    const compositeId = `${product.id}::${variantName ?? ''}::${modifierNames.join(',')}`;
+    const sku = custom.sku ?? null;
+    const compositeId = sku
+      ? skuPersonalizedLineId(product.id, sku.id, modifierNames, custom.notes)
+      : `${product.id}::${variantName ?? ''}::${modifierNames.join(',')}`;
     if (!tryAddCatalogItem(product, {
       id: compositeId,
       productId: product.id,
-      name: product.name,
+      ...(sku ? { skuId: sku.id, skuCode: sku.sku } : {}),
+      name: sku ? `${product.name} — ${sku.name}` : product.name,
       price: finalPrice,
       quantity: custom.quantity,
       variantName,

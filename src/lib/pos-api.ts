@@ -84,10 +84,12 @@ export interface ProductModifier {
     name: string;
     min_selection: number;
     max_selection: number;
+    display_order?: number | null;
     modifiers: Array<{
       id: string;
       name: string;
       price_adjustment: number;
+      display_order?: number | null;
     }>;
   };
 };

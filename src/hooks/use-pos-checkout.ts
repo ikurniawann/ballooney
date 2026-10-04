@@ -132,6 +132,7 @@ export function usePosCheckout() {
                 group: `Option-${idx}`,
               })) || [],
             station: item.station,
+            kitchen_notes: item.notes || undefined,
             quantity: Number(item.quantity),
             unit_price: Number(
               item.price - (item.variantPriceAdj || 0) - (item.modifierPriceAdj || 0)
