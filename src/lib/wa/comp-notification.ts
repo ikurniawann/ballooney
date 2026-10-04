@@ -121,7 +121,7 @@ export function buildFocTopupMessage(
     timeStyle: "short",
   });
   return [
-    "Paddy OS — Topup FOC (Gratis)",
+    "Ballooney OS — Topup FOC (Gratis)",
     `Customer : ${input.customerName?.trim() || "-"}`,
     `Saldo ARK : ${rp(input.amountIdr)} (tanpa pembayaran, tanpa XP)`,
     `Disetujui : ${input.approvedName?.trim() || "-"}`,

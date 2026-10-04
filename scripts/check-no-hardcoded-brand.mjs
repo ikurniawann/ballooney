@@ -18,13 +18,13 @@ const SCAN_TARGETS = [
   "src/app/dashboard/(dashboard)/settings/appearance",
 ];
 
-// Tailwind pink defaults, the retired previous-brand blues, and the Paddy pinks
-// (#e3066f primary, #ec2a80 secondary, #e0156f retired accent). Brand surfaces
+// Tailwind pink defaults, the retired previous-brand blues, the retired Paddy pinks
+// (#e3066f, #ec2a80, #e0156f) and the Ballooney reds (#cc232a primary, #d93338 secondary). Brand surfaces
 // must read them from --brand-primary / --brand-secondary.
-const BANNED_BRAND_HEX = /#(?:db2777|ec4899|be185d|ff00aa|1d1dcc|2941d3|3d5edc|e0156f|e3066f|ec2a80)\b/gi;
+const BANNED_BRAND_HEX = /#(?:db2777|ec4899|be185d|ff00aa|1d1dcc|2941d3|3d5edc|e0156f|e3066f|ec2a80|cc232a|d93338)\b/gi;
 const SCANNED_EXTENSIONS = new Set([".css", ".js", ".jsx", ".mjs", ".ts", ".tsx"]);
 // Whole-file allowlist: theme preset defaults, anti-flash script, chart SSR fallbacks,
-// chart palettes, and company-appearance defaults (Paddy Pink preset).
+// chart palettes, and company-appearance defaults (Ballooney Red preset).
 const WHOLE_FILE_ALLOWLIST = new Set([
   "src/lib/theme/presets.ts",
   "src/components/providers/theme-script.tsx",

@@ -47,7 +47,7 @@ const DEPARTMENTS = [
   { code: "WHL", name: "Warehouse & Logistics", description: "Gudang, distribusi, dan logistik" },
   { code: "QA", name: "Quality Assurance", description: "Standar kualitas produk dan layanan" },
   { code: "GA", name: "General Affairs", description: "Administrasi umum dan fasilitas" },
-  // Retail (Paddy): toko fisik, penjualan online, dan workshop cetak custom
+  // Retail (Ballooney): toko fisik, penjualan online, dan workshop cetak custom
   { code: "RTL", name: "Retail Store", description: "Operasional toko, kasir, dan visual merchandising" },
   { code: "ECOM", name: "E-Commerce", description: "Marketplace, toko online, dan customer service online" },
   { code: "PRD", name: "Production & Printing", description: "Desain & cetak UV case custom, QC, dan packing" },

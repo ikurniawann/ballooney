@@ -153,8 +153,8 @@ export function MemberPortalPage() {
       <header className="mp-rise flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <Image
-            src="/logos/paddy-mark.png"
-            alt="Paddy"
+            src="/logos/ballooney-mark.png"
+            alt="Ballooney"
             width={40}
             height={40}
             className="size-10 object-contain"
@@ -238,7 +238,7 @@ export function MemberPortalPage() {
       </div>
 
       <p className="pt-2 text-center text-[11px] text-[color:var(--mp-ink-soft)]">
-        Paddy · Portal Member
+        Ballooney · Portal Member
       </p>
     </div>
   );

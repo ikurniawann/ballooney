@@ -1,5 +1,5 @@
 /*
- * Paddy POS — service worker.
+ * Ballooney POS — service worker.
  * Tujuan: halaman kasir (/dashboard/pos/*) tetap bisa DIBUKA saat internet
  * putus, bukan cuma bertahan selama tab masih terbuka. Data transaksi
  * offline sendiri disimpan aplikasi di IndexedDB (lihat src/lib/pos-db.ts).
@@ -11,7 +11,7 @@
  *  - selain itu (POST, halaman lain, API lain) → tidak disentuh
  * Respons hasil redirect (mis. ke /login) tidak pernah di-cache.
  */
-const VERSION = 'paddy-pos-v1';
+const VERSION = 'ballooney-pos-v1';
 const CACHE_STATIC = `${VERSION}-static`;
 const CACHE_PAGES = `${VERSION}-pages`;
 const CACHE_API = `${VERSION}-api`;
@@ -32,7 +32,7 @@ self.addEventListener('activate', (event) => {
       const keys = await caches.keys();
       await Promise.all(
         keys
-          .filter((key) => key.startsWith('paddy-pos-') && !key.startsWith(VERSION))
+          .filter((key) => key.startsWith('ballooney-pos-') && !key.startsWith(VERSION))
           .map((key) => caches.delete(key))
       );
       await self.clients.claim();

@@ -223,7 +223,7 @@ export function PrinterSettingsPage() {
                     if (testing) return;
                     setTesting(true);
                     try {
-                      const bytes = encodeEscPosText(["PADDY POS", "Test printer OK"]);
+                      const bytes = encodeEscPosText(["BALLOONEY POS", "Test printer OK"]);
                       if (canUseRawBtPrint() && printBytesViaRawBt(bytes)) {
                         toast.success("Test print dikirim ke RawBT");
                         return;

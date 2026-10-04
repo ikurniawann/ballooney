@@ -22,7 +22,7 @@ interface CompanyProfile {
 }
 
 const FIELD_DEFS: { key: keyof CompanyProfile; label: string; placeholder: string }[] = [
-  { key: "legal_name", label: "Nama legal perusahaan", placeholder: "cth. CV Cipta Kreasi Kreatif" },
+  { key: "legal_name", label: "Nama legal perusahaan", placeholder: "cth. CV Balon Jaya" },
   { key: "address", label: "Alamat perusahaan", placeholder: "cth. Jl. Merdeka No. 1, Bandung" },
   { key: "city", label: "Kota (tempat tanda tangan kontrak)", placeholder: "cth. Bandung" },
   { key: "signer_name", label: "Nama penandatangan", placeholder: "cth. nama Direktur/HRD" },

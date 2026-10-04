@@ -9,7 +9,7 @@ import {
 
 describe("normalizeAccountKey", () => {
   it("huruf kecil + trim supaya A@x.com dan a@x.com satu hitungan", () => {
-    expect(normalizeAccountKey("  Admin@Paddy.ID ")).toBe("admin@paddy.id");
+    expect(normalizeAccountKey("  Admin@Ballooney.Co.ID ")).toBe("admin@ballooney.co.id");
     expect(normalizeAccountKey(null)).toBe("");
   });
   it("dibatasi panjangnya (email raksasa tidak membebani indeks)", () => {

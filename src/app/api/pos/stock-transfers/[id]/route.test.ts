@@ -39,7 +39,7 @@ const transfer = (status: string) => ({
   from_warehouse_id: "hq",
   from_name: "Gudang Pusat",
   to_warehouse_id: "pvj",
-  to_name: "Paddy Store PVJ",
+  to_name: "Ballooney Store PVJ",
   items: [],
 });
 
@@ -78,7 +78,7 @@ describe("POST /api/pos/stock-transfers/[id] — aksi transfer", () => {
     getStockTransfer.mockResolvedValue(transfer("draft"));
     const { StoreStockError } = await import("@/lib/pos/store-stock-server");
     runStockTransferAction.mockRejectedValue(
-      new StoreStockError("Stok Paddywatch Nea Silver di lokasi asal tidak cukup untuk dikirim 9")
+      new StoreStockError("Stok Ballooney Nea Silver di lokasi asal tidak cukup untuk dikirim 9")
     );
     const { POST } = await import("./route");
     const res = await POST(post({ action: "send" }), ctx);

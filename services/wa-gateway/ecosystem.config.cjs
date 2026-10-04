@@ -6,9 +6,9 @@
 module.exports = {
   apps: [
     {
-      // Nama khusus Paddy: gateway Tedja memakai "wa-gateway"; dua proses tak boleh
+      // Nama khusus Ballooney: gateway Tedja memakai "wa-gateway"; dua proses tak boleh
       // berbagi nama/port/sesi (satu sesi = satu nomor WhatsApp).
-      name: "wa-gateway-paddy",
+      name: "wa-gateway-ballooney",
       cwd: __dirname,
       script: "src/server.js",
       interpreter: "node",

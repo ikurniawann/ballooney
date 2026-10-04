@@ -1,9 +1,9 @@
-// Default scope seeder = Paddy HQ (lihat database/seeders/paddy-business-structure.js).
+// Default scope seeder = Ballooney HQ (lihat database/seeders/ballooney-business-structure.js).
 // Seeder master/demo menulis ke HQ; toko memakai katalog yang sama (produk multi-toko).
-const HOLDING_CODE = process.env.SEED_HOLDING_CODE || "CKK";
-const COMPANY_CODE = process.env.SEED_COMPANY_CODE || "PADDY";
-const BRANCH_CODE = process.env.SEED_BRANCH_CODE || "PADDY-HQ";
-const BRANCH_NAME = process.env.SEED_BRANCH_NAME || "Paddy Head Quarter";
+const HOLDING_CODE = process.env.SEED_HOLDING_CODE || "CBJ";
+const COMPANY_CODE = process.env.SEED_COMPANY_CODE || "BALLOONEY";
+const BRANCH_CODE = process.env.SEED_BRANCH_CODE || "BALLOONEY-HQ";
+const BRANCH_NAME = process.env.SEED_BRANCH_NAME || "Ballooney Gading Serpong";
 
 async function resolveSeedBusinessScope(client) {
   const { rows } = await client.query(

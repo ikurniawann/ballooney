@@ -3,7 +3,7 @@
  *
  * - `fnb` (default): kasir restoran — Dine-in / Take Away, jumlah tamu, meja,
  *   TV antrian, tombol "Order" (open bill ke dapur).
- * - `retail` (Paddy): kasir toko — langsung bayar; tanpa jenis order, tamu,
+ * - `retail` (Ballooney): kasir toko — langsung bayar; tanpa jenis order, tamu,
  *   meja, maupun antrian dapur. Order tetap tersimpan sebagai `takeaway`
  *   supaya laporan & integrasi lama tidak berubah.
  *

@@ -9,7 +9,7 @@ export type ThemePreset = {
 export const DEFAULT_PRESET_ID = "wonderland";
 
 export const THEME_PRESETS: readonly ThemePreset[] = [
-  { id: "wonderland", label: "Paddy Pink", primary: "#e3066f", secondary: "#ec2a80" },
+  { id: "wonderland", label: "Ballooney Red", primary: "#cc232a", secondary: "#d93338" },
   { id: "ocean", label: "Ocean", primary: "#0ea5e9", secondary: "#6366f1" },
   { id: "emerald", label: "Emerald", primary: "#10b981", secondary: "#14b8a6" },
   { id: "graphite", label: "Graphite", primary: "#334155", secondary: "#64748b" },

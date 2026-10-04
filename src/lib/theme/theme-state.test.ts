@@ -11,8 +11,8 @@ import {
 describe("resolveBrand", () => {
   it("uses preset colors by default", () => {
     expect(resolveBrand(DEFAULT_THEME_STATE)).toEqual({
-      primary: "#e3066f",
-      secondary: "#ec2a80",
+      primary: "#cc232a",
+      secondary: "#d93338",
     });
   });
   it("prefers custom colors when set", () => {

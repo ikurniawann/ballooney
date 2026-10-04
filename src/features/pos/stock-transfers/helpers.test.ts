@@ -17,7 +17,7 @@ const kaosS: Omit<TransferDraftLine, "qty"> = {
   sku_id: "sku-s",
   sku: "KAOS-S",
   sku_name: "Kaos S",
-  product_name: "Kaos Paddy",
+  product_name: "Kaos Ballooney",
   stock_by_location: { hq: 10, pvj: 2 },
 };
 
@@ -25,7 +25,7 @@ const kaosM: Omit<TransferDraftLine, "qty"> = {
   sku_id: "sku-m",
   sku: "KAOS-M",
   sku_name: "Kaos M",
-  product_name: "Kaos Paddy",
+  product_name: "Kaos Ballooney",
   stock_by_location: { hq: 1 },
 };
 

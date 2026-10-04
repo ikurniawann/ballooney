@@ -243,7 +243,7 @@ export function StockAlertsPage() {
             ? ` · Terakhir ${new Date(data.updated_at).toLocaleTimeString('id-ID')}`
             : ''}
         </span>
-        <span className="font-mono">Paddy POS · Stok Alert</span>
+        <span className="font-mono">Ballooney POS · Stok Alert</span>
       </footer>
     </div>
   );

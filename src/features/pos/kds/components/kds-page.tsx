@@ -352,7 +352,7 @@ function KdsPageContent() {
             Ready: {grouped['ready']?.length || 0}
           </span>
         </div>
-        <div className="font-mono">Paddy POS KDS</div>
+        <div className="font-mono">Ballooney POS KDS</div>
       </footer>
     </div>
   );

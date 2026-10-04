@@ -123,7 +123,7 @@ server.listen(PORT, HOST, () => {
 // belum jalan sehingga 172.18.0.1 tidak ada) tidak mematikan listener utama.
 //
 // Setelah reboot server, PM2 menyalakan gateway SEBELUM bridge Docker siap →
-// EADDRNOTAVAIL. Dulu tidak dicoba ulang, sehingga container app (paddy)
+// EADDRNOTAVAIL. Dulu tidak dicoba ulang, sehingga container app (ballooney)
 // tidak bisa menjangkau gateway sampai di-restart manual (insiden 2026-10-01).
 // Kini dicoba ulang dgn jeda bertahap (5 dtk → maks 60 dtk) sampai berhasil.
 const EXTRA_RETRY_MIN_MS = 5_000;

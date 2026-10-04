@@ -1,13 +1,13 @@
 {
-  "name": "Paddy POS Kasir",
-  "short_name": "Paddy POS",
-  "description": "Mode tablet / kiosk untuk kasir Paddy POS",
+  "name": "Ballooney POS Kasir",
+  "short_name": "Ballooney POS",
+  "description": "Mode tablet / kiosk untuk kasir Ballooney POS",
   "start_url": "/dashboard/pos/tablet",
   "scope": "/dashboard/pos/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#ffffff",
-  "theme_color": "#e3066f",
+  "theme_color": "#cc232a",
   "lang": "id",
   "icons": [
     {

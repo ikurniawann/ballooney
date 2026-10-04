@@ -4,7 +4,7 @@
  * Murni (dipakai klien & server).
  */
 
-export const GUEST_STORAGE_KEY = "paddy-table-order-guest";
+export const GUEST_STORAGE_KEY = "ballooney-table-order-guest";
 export const GUEST_NAME_MAX = 80;
 
 export type GuestIdentity = { name: string; phone: string };

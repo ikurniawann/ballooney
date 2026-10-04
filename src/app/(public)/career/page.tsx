@@ -13,7 +13,7 @@ import {
   MapPin,
 } from "lucide-react";
 
-const logoUrl = "/logos/paddy-wordmark.png?v=paddy2";
+const logoUrl = "/logos/ballooney-wordmark.png?v=ballooney2";
 
 const studioImages = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDJr8IKAu_mCH2MXuI0aBsNIWp2CsmUx2bPP--qivo51UWxxyAdNGCKrk_1XY7XHmZ_wAZLFWYTKuFjdHi0-4zAZanbIiUxWbpBU-ZkJedhWA7FCcObdBkJaLGL3PHefi86Y984mxF1mw843hAo6Ip1R4ia5c_LN2Pv1hLYMDdwBC9rQEjdxterd171OS-FTEK2sYSDoW1aagus7Gp-WoN9KGhI5NmQt8HqbJmn9xoVU5Om859B60lbw67wnqYWuS7LhAnmXiLIeGc",
@@ -74,12 +74,12 @@ export default function CareerPage() {
     <div id="top" className="min-h-screen bg-[#f8f9fa] text-[#191c1d] career-roundo">
       <nav className="fixed top-0 z-50 w-full border-b border-[#d4d4d4] bg-[#f8f9fa]/95 backdrop-blur">
         <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-10">
-          <Link href="/career" className="flex h-full items-center" aria-label="Paddy careers">
-            <img src={logoUrl} alt="Paddy Logo" className="h-full w-auto object-contain" />
+          <Link href="/career" className="flex h-full items-center" aria-label="Ballooney careers">
+            <img src={logoUrl} alt="Ballooney Logo" className="h-full w-auto object-contain" />
           </Link>
           <a
             href="#open-roles"
-            className="rounded-full bg-[#e3066f] px-6 py-2 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#f4529a] active:scale-95"
+            className="rounded-full bg-[#cc232a] px-6 py-2 text-sm font-semibold uppercase tracking-[0.08em] text-white transition hover:bg-[#e84a4f] active:scale-95"
           >
             Open Roles
           </a>
@@ -93,8 +93,8 @@ export default function CareerPage() {
           </h1>
           <div className="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-[#4a4a4a]">
             <p>
-              Paddy is growing a team that crafts customized phone cases and adorable goods, and delivers playful,
-              precise experiences across retail, e-commerce, design, and technology.
+              Ballooney has been delivering happiness since 2016 — custom balloon gifts, flower arrangements, and event
+              decorations, crafted with care across retail, events, e-commerce, design, and technology.
             </p>
             <p>
               If you are passionate about making thoughtful work at 150% and discovering new possibilities, we would love to
@@ -112,7 +112,7 @@ export default function CareerPage() {
               {[...studioImages, ...studioImages].map((src, index) => (
                 <div key={`${src}-${index}`} className="group relative mx-2 aspect-[3/4] w-[58vw] shrink-0 cursor-crosshair sm:w-[35vw] md:w-[25vw]">
                   <img src={src} alt={`Studio ${index + 1}`} className="h-full w-full object-cover grayscale" />
-                  <div className="absolute inset-0 bg-[#e3066f] opacity-60 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-20" />
+                  <div className="absolute inset-0 bg-[#cc232a] opacity-60 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-20" />
                 </div>
               ))}
             </div>
@@ -153,10 +153,10 @@ export default function CareerPage() {
                       <Link
                         key={job.id}
                         href={`/portal?job_opening_id=${job.id}&position_id=${job.position_id || ""}&brand_id=${job.brand_id || ""}`}
-                        className="group/item flex flex-col justify-between gap-4 rounded-lg border border-[#d4d4d4] bg-white p-6 transition-all duration-300 hover:border-[#f4529a] md:flex-row md:items-center"
+                        className="group/item flex flex-col justify-between gap-4 rounded-lg border border-[#d4d4d4] bg-white p-6 transition-all duration-300 hover:border-[#e84a4f] md:flex-row md:items-center"
                       >
                         <div>
-                          <h3 className="text-2xl font-medium leading-tight transition-colors group-hover/item:text-[#f4529a]">
+                          <h3 className="text-2xl font-medium leading-tight transition-colors group-hover/item:text-[#e84a4f]">
                             {job.title}
                           </h3>
                           <div className="mt-3 flex flex-wrap items-center gap-6 text-sm font-medium text-[#4a4a4a]">
@@ -182,7 +182,7 @@ export default function CareerPage() {
                           <span className="hidden rounded-full border border-[#d4d4d4] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] md:inline-block">
                             {job.work_mode}
                           </span>
-                          <ArrowRight className="h-5 w-5 -translate-x-2 text-[#f4529a] opacity-0 transition-all duration-300 group-hover/item:translate-x-0 group-hover/item:opacity-100" />
+                          <ArrowRight className="h-5 w-5 -translate-x-2 text-[#e84a4f] opacity-0 transition-all duration-300 group-hover/item:translate-x-0 group-hover/item:opacity-100" />
                         </div>
                       </Link>
                     ))}
@@ -196,7 +196,7 @@ export default function CareerPage() {
         <section className="mx-auto mt-20 max-w-[1280px] px-4 sm:px-6 lg:px-10">
           <div className="flex flex-col items-center justify-between gap-10 rounded-lg border border-[#d4d4d4] bg-[#edeeef] p-8 text-center md:flex-row md:p-16 md:text-left">
             <div className="max-w-xl">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#f4529a]">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#e84a4f]">
                 <BriefcaseBusiness className="h-5 w-5" />
               </div>
               <h2 className="mb-3 text-3xl font-semibold leading-tight">Don&apos;t see a role for you?</h2>
@@ -219,26 +219,26 @@ export default function CareerPage() {
         <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-10 px-4 sm:px-6 md:grid-cols-2 lg:px-10">
           <div className="space-y-6">
             <div className="flex h-12 items-center">
-              <img src={logoUrl} alt="Paddy Logo" className="h-full w-auto object-contain" />
+              <img src={logoUrl} alt="Ballooney Logo" className="h-full w-auto object-contain" />
             </div>
             <p className="max-w-sm text-base leading-relaxed text-[#4a4a4a]">
               Designing emotional experiences at the intersection of technology, art, and service.
             </p>
-            <p className="text-base text-[#4a4a4a]">© 2026 Paddy. All rights reserved.</p>
+            <p className="text-base text-[#4a4a4a]">© 2026 Ballooney. All rights reserved.</p>
           </div>
           <div className="flex flex-col justify-between gap-10 md:items-end">
             <div className="flex flex-wrap gap-6">
               {["LinkedIn", "Instagram", "Vimeo", "Privacy Policy", "Terms"].map((item) => (
-                <a key={item} href="#" className="text-base text-[#4a4a4a] transition-colors hover:text-[#f4529a]">
+                <a key={item} href="#" className="text-base text-[#4a4a4a] transition-colors hover:text-[#e84a4f]">
                   {item}
                 </a>
               ))}
             </div>
             <a href="#top" className="group flex items-center gap-1 text-[#4a4a4a]">
-              <span className="text-sm font-semibold uppercase tracking-[0.12em] transition-colors group-hover:text-[#f4529a]">
+              <span className="text-sm font-semibold uppercase tracking-[0.12em] transition-colors group-hover:text-[#e84a4f]">
                 Back to top
               </span>
-              <ArrowUp className="h-4 w-4 text-[#f4529a]" />
+              <ArrowUp className="h-4 w-4 text-[#e84a4f]" />
             </a>
           </div>
         </div>

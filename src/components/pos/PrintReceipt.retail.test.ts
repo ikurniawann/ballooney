@@ -16,7 +16,7 @@ const retailPayload: ReceiptPayload = {
   queueNumber: "001",
   orderType: "takeaway",
   table: null,
-  items: [{ id: "1", productId: "p1", name: "Paddywatch Nea — Black", price: 389000, quantity: 1 }],
+  items: [{ id: "1", productId: "p1", name: "Ballooney Nea — Black", price: 389000, quantity: 1 }],
   notes: "",
   total: 389000,
   change: 0,

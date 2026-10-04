@@ -97,7 +97,7 @@ describe("mapGofoodItems", () => {
       "prod-1",
       {
         id: "prod-1",
-        name: "Phone Case Paddy",
+        name: "Phone Case Ballooney",
         sku: "BRG-01",
         station: "kitchen",
         variants: [{ id: "v-keju", name: "Keju" }],
@@ -110,7 +110,7 @@ describe("mapGofoodItems", () => {
     expect(lines).toEqual([
       {
         product_id: "prod-1",
-        product_name: "Phone Case Paddy",
+        product_name: "Phone Case Ballooney",
         product_sku: "BRG-01",
         quantity: 2,
         unit_price: 15000,

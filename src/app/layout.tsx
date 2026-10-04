@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: brandName(),
   description: `${brandOsName()} — ERP terintegrasi untuk operasional bisnis`,
   icons: {
-    icon: "/favicon.svg?v=paddy2",
+    icon: "/favicon.svg?v=ballooney2",
   },
 };
 

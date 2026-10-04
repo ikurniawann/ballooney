@@ -40,7 +40,7 @@ import {
 } from "recharts";
 import { useHRISReport } from "../queries";
 
-const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#ec2a80", "#14b8a6", "#f97316"];
+const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#d93338", "#14b8a6", "#f97316"];
 
 const STATUS_LABELS: Record<string, string> = {
   permanent: "Tetap",

@@ -7,7 +7,7 @@ import {
   variantCategoryId,
 } from "./catalog";
 
-const appUrl = "https://paddy.reddie.id";
+const appUrl = "https://ballooney.reddie.id";
 
 describe("buildGobizCatalog", () => {
   it("mengelompokkan item per kategori, external_id = id produk, varian jadi variant_category min1/max1", () => {
@@ -47,7 +47,7 @@ describe("buildGobizCatalog", () => {
       description: "Signature",
       in_stock: true,
       price: 25000,
-      image: "https://paddy.reddie.id/products/kopi-susu.png",
+      image: "https://ballooney.reddie.id/products/kopi-susu.png",
       variant_category_external_ids: [variantCategoryId("p-kopi")],
     });
     expect(payload.variant_categories).toEqual([

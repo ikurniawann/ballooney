@@ -33,7 +33,7 @@ const ORG_TYPE_LABELS: Record<string, string> = {
   lainnya: "Lainnya",
 };
 
-/** EPIC-050 T-5.3 — halaman publik paddy.reddie.id/public. */
+/** EPIC-050 T-5.3 — halaman publik ballooney.reddie.id/public. */
 export function PublicFormPage({ form }: { form: PublicFormView }) {
   const [values, setValues] = useState<Record<string, unknown>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -101,7 +101,7 @@ export function PublicFormPage({ form }: { form: PublicFormView }) {
   return (
     <main className="relative min-h-screen bg-[#0f0f0f]">
       <div className="absolute inset-0">
-        <Image src="/bg-paddy-doodle-pink.webp" alt="" fill priority className="object-cover opacity-25" sizes="100vw" />
+        <Image src="/bg-ballooney-red.webp" alt="" fill priority className="object-cover opacity-25" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f0f0f]/80 via-[#1c1c1c]/85 to-[#0f0f0f]/95" />
       </div>
 
@@ -109,7 +109,7 @@ export function PublicFormPage({ form }: { form: PublicFormView }) {
           `.flex.min-h-screen` yang menimpa latar dengan page-mesh terang. */}
       <div className="relative mx-auto flex min-h-dvh max-w-3xl flex-col px-5 py-10 sm:py-16">
         <div className="flex items-center gap-3">
-          <Image src="/logos/paddy-wordmark.png" alt="Paddy" width={123} height={44} className="h-11 w-auto" priority />
+          <Image src="/logos/ballooney-wordmark.png" alt="Ballooney" width={123} height={44} className="h-11 w-auto" priority />
         </div>
 
         <div className="mt-8 rounded-2xl border border-white/10 bg-white/95 p-6 shadow-2xl backdrop-blur sm:p-8">
@@ -158,20 +158,20 @@ export function PublicFormPage({ form }: { form: PublicFormView }) {
                 type="button"
                 onClick={submit}
                 disabled={status === "sending"}
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#e3066f] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#b8045a] disabled:opacity-60 sm:w-auto"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#cc232a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#a81c22] disabled:opacity-60 sm:w-auto"
               >
                 {status === "sending" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
                 {form.submit_label}
               </button>
               <p className="mt-3 text-xs text-gray-500">
-                Dengan mengirim, Anda setuju dihubungi tim Paddy terkait permintaan ini.
+                Dengan mengirim, Anda setuju dihubungi tim Ballooney terkait permintaan ini.
               </p>
             </>
           )}
         </div>
 
         <p className="mt-auto pt-10 text-center text-xs text-white/50">
-          © {COPYRIGHT_YEAR} Paddy
+          © {COPYRIGHT_YEAR} Ballooney
         </p>
       </div>
     </main>
@@ -185,7 +185,7 @@ function FormField({ field, value, error, onChange }: {
   onChange: (v: unknown) => void;
 }) {
   const base =
-    "w-full rounded-lg border bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#e3066f] focus:ring-2 focus:ring-[#e3066f]/20";
+    "w-full rounded-lg border bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-[#cc232a] focus:ring-2 focus:ring-[#cc232a]/20";
   const border = error ? "border-red-400" : "border-gray-300";
   const span = field.width === 2 ? "sm:col-span-2" : "";
   const id = `f-${field.key}`;
@@ -194,7 +194,7 @@ function FormField({ field, value, error, onChange }: {
     <div className={span}>
       <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-gray-800">
         {field.label}
-        {field.required ? <span className="ml-0.5 text-[#e3066f]">*</span> : null}
+        {field.required ? <span className="ml-0.5 text-[#cc232a]">*</span> : null}
       </label>
 
       {field.type === "textarea" ? (
@@ -207,7 +207,7 @@ function FormField({ field, value, error, onChange }: {
         </select>
       ) : field.type === "checkbox" ? (
         <label className="inline-flex items-center gap-2 text-sm text-gray-700">
-          <input id={id} type="checkbox" className="h-4 w-4 rounded border-gray-300 text-[#e3066f]"
+          <input id={id} type="checkbox" className="h-4 w-4 rounded border-gray-300 text-[#cc232a]"
             checked={Boolean(value)} onChange={(e) => onChange(e.target.checked)} />
           {field.help_text ?? "Ya"}
         </label>

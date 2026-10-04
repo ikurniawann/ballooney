@@ -40,7 +40,7 @@ import {
 import { useAnalyticsBrands, useAnalyticsData } from "../queries";
 
 
-const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#ec2a80", "#14b8a6"];
+const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#d93338", "#14b8a6"];
 
 export function AnalyticsPage() {
   const { toasts, showToast, removeToast } = useToast();

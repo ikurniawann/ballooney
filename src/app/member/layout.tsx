@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portal Member — Paddy",
+  title: "Portal Member — Ballooney",
   description: "Cek saldo ARK Coin, XP, tier, reward, dan riwayat transaksi Anda.",
 };
 

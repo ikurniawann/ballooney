@@ -141,7 +141,7 @@ describe("claimMerchandiseStock — multi-toko", () => {
     }));
     const from = vi.fn(() => ({
       select: () => ({
-        eq: () => ({ maybeSingle: async () => ({ data: { name: "Paddywatch Nea" } }) }),
+        eq: () => ({ maybeSingle: async () => ({ data: { name: "Ballooney Nea" } }) }),
       }),
     }));
     const db = { rpc, from } as unknown as DbClient;

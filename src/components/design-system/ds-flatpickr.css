@@ -72,15 +72,15 @@
 .ds-flatpickr .flatpickr-day.selected,
 .ds-flatpickr .flatpickr-day.startRange,
 .ds-flatpickr .flatpickr-day.endRange {
-  background: #e3066f;
-  border-color: #e3066f;
+  background: #cc232a;
+  border-color: #cc232a;
 }
 
 .ds-flatpickr .flatpickr-day.selected:hover,
 .ds-flatpickr .flatpickr-day.startRange:hover,
 .ds-flatpickr .flatpickr-day.endRange:hover {
-  background: #b8045a;
-  border-color: #b8045a;
+  background: #a81c22;
+  border-color: #a81c22;
 }
 
 .ds-flatpickr .flatpickr-day.today {
@@ -88,5 +88,5 @@
 }
 
 .ds-flatpickr .flatpickr-day.today:hover {
-  border-color: #e3066f;
+  border-color: #cc232a;
 }

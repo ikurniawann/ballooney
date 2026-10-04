@@ -112,7 +112,7 @@ export default function LoginPage() {
         .eq("id", authData.user.id)
         .single();
 
-      // Hanya super_admin yang mendarat di desktop Paddy OS. Semua role lain
+      // Hanya super_admin yang mendarat di desktop Ballooney OS. Semua role lain
       // langsung ke Area Karyawan (/dashboard/me = beranda); redirect yang
       // diminta dihormati hanya bila masih di dalam area /dashboard/me.
       const role = (profile as { role?: string } | null)?.role;

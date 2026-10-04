@@ -238,7 +238,7 @@ export async function POST(request: NextRequest) {
 
     const fallbackAnswer = includeProjectData
       ? generateSummaryAnswer(prompt, summary, profile?.full_name ?? user.email ?? "User", intent)
-      : "Do belum bisa menghubungi tingkat yang dipilih saat ini. Coba lagi sebentar atau pilih tingkat lain di Paddy OS Settings.";
+      : "Do belum bisa menghubungi tingkat yang dipilih saat ini. Coba lagi sebentar atau pilih tingkat lain di Ballooney OS Settings.";
 
     // Create session if none exists (first user message in a fresh chat)
     if (!sessionId) {
@@ -980,13 +980,13 @@ async function generateAnswer({
   const scopeInstruction = buildScopeInstruction(scope);
 
   const systemPrompt = [
-    "Kamu adalah Do, asisten Paddy OS untuk semua user Paddy OS.",
+    "Kamu adalah Do, asisten Ballooney OS untuk semua user Ballooney OS.",
     "Perkenalkan dirimu sebagai Do. Jangan menyebut vendor atau nama model di balik layar kecuali user bertanya langsung.",
     scopeInstruction,
     "Jawab dalam Bahasa Indonesia yang ramah, jelas, natural, dan actionable.",
     "Gunakan bahasa awam seperti asisten operasional, bukan bahasa developer.",
     "Jangan menyebut JSON, API, query, schema, database, payload, object, array, model, prompt, system, atau istilah teknis internal kecuali user secara eksplisit meminta penjelasan teknis.",
-    "Jika user bertanya data bisnis Paddy OS, gunakan data internal yang tersedia dan jangan mengarang angka.",
+    "Jika user bertanya data bisnis Ballooney OS, gunakan data internal yang tersedia dan jangan mengarang angka.",
     "Kamu punya alat untuk mengambil data terkini (karyawan, absensi, stok, penjualan, kandidat). Pakai alat itu bila pertanyaannya spesifik, jangan menebak dari ringkasan.",
     "Kamu juga bisa MENYIAPKAN aksi tertentu (membuat draft pengumuman, mencatat catatan kandidat). Aksi itu tidak pernah berjalan otomatis: sistem menampilkan kartu konfirmasi dan user harus menekan tombolnya sendiri. Setelah menyiapkan aksi, minta user memeriksa kartu konfirmasi di bawah jawabanmu, dan jangan pernah mengklaim aksinya sudah dijalankan.",
     "Jika data yang diperlukan tidak tersedia, cukup katakan data tersebut belum tersedia di sistem dan sarankan module atau filter yang perlu dibuka.",
@@ -1013,8 +1013,8 @@ async function generateAnswer({
     // Hanya modul yang relevan dengan intent yang dikirim — bukan seluruh
     // summary. Lihat lib/assistant/context.ts untuk alasan & pengujiannya.
     includeProjectData
-      ? `\nKonteks internal Paddy OS yang tersedia jika relevan:\n${JSON.stringify(selectContextForIntent(summary, intent), null, 2)}`
-      : "\nKonteks operasional Paddy OS tidak dikirim untuk mode General Chat.",
+      ? `\nKonteks internal Ballooney OS yang tersedia jika relevan:\n${JSON.stringify(selectContextForIntent(summary, intent), null, 2)}`
+      : "\nKonteks operasional Ballooney OS tidak dikirim untuk mode General Chat.",
   ].join("\n");
   const messages = [
     { role: "system", content: systemPrompt },
@@ -1075,8 +1075,8 @@ function buildScopeInstruction(scope: AiAssistantScope): string {
   if (scope === "project_only") {
     return [
       "Mode Project Only aktif.",
-      "Jawab hanya berdasarkan konteks Talentpool/Paddy OS, history percakapan, dan data internal yang diberikan.",
-      "Jika user bertanya pengetahuan umum atau hal di luar project, jelaskan singkat bahwa mode Project Only sedang aktif dan minta user mengganti mode di Paddy OS Settings.",
+      "Jawab hanya berdasarkan konteks Talentpool/Ballooney OS, history percakapan, dan data internal yang diberikan.",
+      "Jika user bertanya pengetahuan umum atau hal di luar project, jelaskan singkat bahwa mode Project Only sedang aktif dan minta user mengganti mode di Ballooney OS Settings.",
     ].join(" ");
   }
 
@@ -1090,7 +1090,7 @@ function buildScopeInstruction(scope: AiAssistantScope): string {
 
   return [
     "Mode Project + General aktif.",
-    "Untuk pertanyaan operasional Talentpool/Paddy OS, prioritaskan data internal yang diberikan.",
+    "Untuk pertanyaan operasional Talentpool/Ballooney OS, prioritaskan data internal yang diberikan.",
     "Untuk ide, strategi, copywriting, SOP, analisis, coding, dan pertanyaan umum, jawab bebas dengan knowledge model tanpa memaksa data dashboard.",
   ].join(" ");
 }
@@ -1181,7 +1181,7 @@ function generateSummaryAnswer(message: string, summary: Summary, name: string, 
   const includeAll = intent === "all" || !lower || lower.includes("semua") || lower.includes("summary") || lower.includes("ringkas") || lower.includes("overview");
 
   if (includeAll) {
-    sections.push(`Halo ${name}, berikut ringkasan Paddy OS saat ini:`);
+    sections.push(`Halo ${name}, berikut ringkasan Ballooney OS saat ini:`);
     sections.push(formatHris(summary));
     sections.push(formatPerformance(summary));
     sections.push(formatPayroll(summary));

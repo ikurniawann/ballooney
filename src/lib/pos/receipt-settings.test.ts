@@ -10,8 +10,8 @@ import {
 
 describe("normalizeReceiptLines", () => {
   it("trims, drops empties and non-strings", () => {
-    expect(normalizeReceiptLines(["  Paddy  ", "", 42, null, "Dago"])).toEqual([
-      "Paddy",
+    expect(normalizeReceiptLines(["  Ballooney  ", "", 42, null, "Dago"])).toEqual([
+      "Ballooney",
       "Dago",
     ]);
   });

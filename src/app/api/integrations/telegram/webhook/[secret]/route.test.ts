@@ -32,7 +32,7 @@ beforeEach(() => {
   registerTelegramChat.mockReset().mockResolvedValue("pending");
   setTelegramChatStatus.mockReset().mockResolvedValue(true);
   sendTelegramMessage.mockReset().mockResolvedValue({});
-  loadTelegramSettings.mockReset().mockResolvedValue({ token: "123:tok", webhookSecret: SECRET, username: "paddy_bot" });
+  loadTelegramSettings.mockReset().mockResolvedValue({ token: "123:tok", webhookSecret: SECRET, username: "ballooney_bot" });
 });
 
 const startFrom = (text: string) => ({
@@ -55,8 +55,8 @@ describe("POST /api/integrations/telegram/webhook/[secret]", () => {
 
   it("/start@bot di grup juga dikenali; chat yang sudah aktif dibalas 'sudah menerima'", async () => {
     registerTelegramChat.mockResolvedValue("active");
-    await post({ message: { text: "/start@paddy_bot", chat: { id: -100, type: "group", title: "Staf Paddy" } } });
-    expect(registerTelegramChat).toHaveBeenCalledWith({ id: -100, type: "group", title: "Staf Paddy", username: null });
+    await post({ message: { text: "/start@ballooney_bot", chat: { id: -100, type: "group", title: "Staf Ballooney" } } });
+    expect(registerTelegramChat).toHaveBeenCalledWith({ id: -100, type: "group", title: "Staf Ballooney", username: null });
     expect(String(sendTelegramMessage.mock.calls[0][2])).toMatch(/sudah menerima/);
   });
 

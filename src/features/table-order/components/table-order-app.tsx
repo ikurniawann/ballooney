@@ -62,7 +62,7 @@ import { OrderTracking } from "./order-tracking";
 import { VariantSheet } from "./variant-sheet";
 import { DecrementSheet } from "./decrement-sheet";
 
-const HERO_IMAGE = "/bg-paddy-doodle-pink.webp";
+const HERO_IMAGE = "/bg-ballooney-red.webp";
 
 type View = "menu" | "tracking" | "orders";
 
@@ -460,7 +460,7 @@ export function TableOrderApp({ tableCode }: { tableCode: string }) {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-gray-50" />
           <div className="absolute inset-x-4 top-4 flex items-center justify-between">
             <div className="flex size-11 items-center justify-center rounded-full bg-white/95 shadow">
-              <img src="/logos/paddy-mark.png?v=paddy2" alt={brandName} className="size-7 object-contain" />
+              <img src="/logos/ballooney-mark.png?v=ballooney2" alt={brandName} className="size-7 object-contain" />
             </div>
             <div className="flex items-center gap-2">
               <button

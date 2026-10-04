@@ -1,6 +1,6 @@
-# Paddy OS
+# Ballooney OS
 
-Paddy OS adalah ERP terpadu berbasis Next.js dan PostgreSQL native untuk operasional Paddy (CV Cipta Kreasi Kreatif, https://paddy.id) — brand retail custom phone case & adorable goods. Instance: https://paddy.reddie.id. Sistem ini mencakup HRIS, rekrutmen, POS, CRM loyalty, purchasing, inventory, produksi, reporting QA, Paddy OS desktop, serta beberapa self-service flow untuk customer.
+Ballooney OS adalah ERP terpadu berbasis Next.js dan PostgreSQL native untuk operasional Ballooney (CV Balon Jaya, https://ballooney.co.id) — toko balon & bunga custom dan jasa dekorasi sejak 2016 (Gading Serpong, Tangerang). Instance: https://ballooney.reddie.id. Sistem ini mencakup HRIS, rekrutmen, POS, CRM loyalty, purchasing, inventory, produksi, reporting QA, Ballooney OS desktop, serta beberapa self-service flow untuk customer.
 
 Database memakai PostgreSQL biasa (driver `pg`), auth/session di-handle di application layer (bcrypt + cookie session), dan data layer memakai shim ringan di `src/lib/db-client` yang meniru subset API PostgREST.
 
@@ -11,18 +11,18 @@ Database memakai PostgreSQL biasa (driver `pg`), auth/session di-handle di appli
 | Framework | Next.js App Router, React |
 | Database | PostgreSQL (driver `pg`), schema-per-domain |
 | Auth | Custom (bcrypt + cookie session), schema `auth` |
-| Styling | Tailwind CSS v4, shadcn/ui, custom Paddy OS design system |
+| Styling | Tailwind CSS v4, shadcn/ui, custom Ballooney OS design system |
 | Data & Form | React Hook Form, Zod, TanStack Query |
 | Charts | Recharts |
 | Drag & Drop | @hello-pangea/dnd |
 | Email | Resend |
 | WhatsApp | Fonnte API |
 | Deployment | Vercel |
-| AI | Ollama cloud models untuk Paddy OS AI Assistant |
+| AI | Ollama cloud models untuk Ballooney OS AI Assistant |
 
 ## Module Overview
 
-### Paddy OS Desktop
+### Ballooney OS Desktop
 
 Route utama:
 - `/arkiv-os`
@@ -31,7 +31,7 @@ Route utama:
 Fitur:
 - Desktop-style launcher untuk membuka module bisnis dalam window.
 - AI Assistant dengan mode context project atau general knowledge.
-- Pengaturan AI Assistant di Paddy OS Settings, termasuk pilihan LLM.
+- Pengaturan AI Assistant di Ballooney OS Settings, termasuk pilihan LLM.
 - QA progress dashboard sementara di `/qa` untuk ringkasan progress dan test result.
 
 Dokumentasi terkait:
@@ -291,7 +291,7 @@ Fitur:
 - Position.
 - Employment status.
 - Global settings.
-- Paddy OS settings.
+- Ballooney OS settings.
 
 ## API Surface
 
@@ -393,7 +393,7 @@ Catatan: sebagian logic CRM berada di `src/lib/crm/loyalty-engine.ts` dan dipang
 
 | Method | Endpoint | Deskripsi |
 | --- | --- | --- |
-| POST | `/api/ai/assistant` | Paddy OS AI Assistant |
+| POST | `/api/ai/assistant` | Ballooney OS AI Assistant |
 
 ## Database Highlights
 
@@ -503,7 +503,7 @@ FONNTE_API_KEY=
 RESEND_API_KEY=
 NEXT_PUBLIC_APP_URL=
 
-# Mode kasir (build-time): fnb (default) | retail — Paddy memakai retail
+# Mode kasir (build-time): fnb (default) | retail — Ballooney memakai retail
 NEXT_PUBLIC_POS_MODE=retail
 ```
 
@@ -511,7 +511,7 @@ NEXT_PUBLIC_POS_MODE=retail
 | --- | --- | --- |
 | `DATABASE_URL` | App Next.js (`pg`) | Koneksi utama aplikasi |
 | `MIGRATE_DATABASE_URL` | `db:migrate*`, seeder | Target migrasi (Postgres lokal) |
-| `NEXT_PUBLIC_POS_MODE` | Kasir POS (build-time) | `retail` = kasir toko: tanpa Dine-in/Take Away, jumlah tamu, meja, TV antrian, tombol "Order"; pasangkan dengan seeder `db:seed:paddy-retail-pos` |
+| `NEXT_PUBLIC_POS_MODE` | Kasir POS (build-time) | `retail` = kasir toko: tanpa Dine-in/Take Away, jumlah tamu, meja, TV antrian, tombol "Order"; pasangkan dengan seeder `db:seed:ballooney-retail-pos` |
 
 ## Getting Started
 
@@ -624,7 +624,7 @@ Role valid mengikuti constraint `configuration.users.role`:
 
 ## Design Notes
 
-- Paddy OS memakai identitas monokrom hitam/putih: primary action hitam (#111111), aksen pink (#e0156f) lewat --brand-secondary.
+- Ballooney OS memakai identitas monokrom hitam/putih: primary action hitam (#111111), aksen pink (#e0156f) lewat --brand-secondary.
 - Dashboard operasional dibuat padat, scannable, dan action-oriented.
 - POS dan self-service flow mengutamakan touch-friendly controls.
 - Purchasing memakai istilah operasional Indonesia seperti Barang Masuk, Produksi, dan Recipe/BOM.

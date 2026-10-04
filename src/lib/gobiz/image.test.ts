@@ -1,16 +1,16 @@
 import { describe, expect, it } from "vitest";
 import { decodeImageSource, encodeImageSource, gofoodImageUrl } from "./image";
 
-const app = "https://paddy.reddie.id";
+const app = "https://ballooney.reddie.id";
 
 describe("gofoodImageUrl", () => {
   it("JPEG/PNG lokal langsung; WebP lewat konverter .jpg", () => {
     expect(gofoodImageUrl("/products/a.png", app)).toBe(`${app}/products/a.png`);
     expect(gofoodImageUrl("/products/a.JPG", `${app}/`)).toBe(`${app}/products/a.JPG`);
-    const url = gofoodImageUrl("/products/paddy/paddy-case-02.webp", app)!;
-    expect(url).toMatch(/^https:\/\/paddy\.reddie\.id\/api\/public\/gofood-image\/[A-Za-z0-9_-]+\.jpg$/);
+    const url = gofoodImageUrl("/products/ballooney/ballooney-case-02.webp", app)!;
+    expect(url).toMatch(/^https:\/\/ballooney\.reddie\.id\/api\/public\/gofood-image\/[A-Za-z0-9_-]+\.jpg$/);
     const token = url.split("/").pop()!.replace(/\.jpg$/, "");
-    expect(decodeImageSource(token)).toBe("/products/paddy/paddy-case-02.webp");
+    expect(decodeImageSource(token)).toBe("/products/ballooney/ballooney-case-02.webp");
   });
 
   it("unggahan storage ikut dikonversi; URL luar non-JPEG/PNG & sumber asing dibuang", () => {

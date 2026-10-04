@@ -23,7 +23,7 @@ import type { FormRow, PublicFieldDef, PublicFormInput } from "../types";
 const dateTime = (v: string | null) =>
   v ? new Date(v).toLocaleString("id-ID", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "—";
 
-/** EPIC-050 T-5.3 — kelola form publik yang tampil di paddy.reddie.id/public. */
+/** EPIC-050 T-5.3 — kelola form publik yang tampil di ballooney.reddie.id/public. */
 export function PublicFormsPage() {
   const formsQuery = useForms();
   const updateMutation = useUpdateForm();
@@ -202,7 +202,7 @@ function FormEditor({ initial, onClose }: { initial: FormRow | null; onClose: ()
             {initial ? <p className="text-xs text-gray-500">Slug tidak bisa diubah agar tautan yang sudah disebar tetap hidup.</p> : null}
           </div>
         </div>
-        <div className="space-y-1.5"><Label>Judul di halaman</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Hubungi Paddy" /></div>
+        <div className="space-y-1.5"><Label>Judul di halaman</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Hubungi Ballooney" /></div>
         <div className="space-y-1.5"><Label>Deskripsi</Label><Input value={description} onChange={(e) => setDescription(e.target.value)} /></div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div className="space-y-1.5"><Label>Teks tombol</Label><Input value={submitLabel} onChange={(e) => setSubmitLabel(e.target.value)} /></div>

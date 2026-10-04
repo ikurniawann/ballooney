@@ -175,7 +175,7 @@ export function ReceiptSettingsCard() {
               <textarea
                 rows={4}
                 className={textareaClass}
-                placeholder={"PADDY\nJl. Kopo Permai III F2 No. 15, Bandung\nIG @paddy.id"}
+                placeholder={"BALLOONEY\nRuko Fluorite No. 66, Gading Serpong, Tangerang\nIG @ballooney.id"}
                 value={headerText}
                 onChange={(e) => setHeaderText(e.target.value)}
               />
